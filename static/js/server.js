@@ -59,7 +59,7 @@ function chamarController(req,res,obj){
 //app.get('/api/markers/inserir', markerController.inserir);
 app.get('/api/markers/localizarProximo/:lat/:lng', markerController.localizarProximo);
 
-app.listen(3000,function(){
+app.listen(process.env.PORT || 3000,function(){
     console.log("Working on port 3000");
 });
 
