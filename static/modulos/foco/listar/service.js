@@ -59,7 +59,7 @@ angular.module('dengue.focos').factory('focos', function(){
 
   function getMarkers(map){
     var xmlhttp = new XMLHttpRequest();
-    var url = "http://127.0.0.1:3000/api/markers/listar";
+    var url = "https://dengue-em-foco.herokuapp.com/api/markers/listar";
 
     xmlhttp.onreadystatechange = function() {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {

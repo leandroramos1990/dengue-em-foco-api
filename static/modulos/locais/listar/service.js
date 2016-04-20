@@ -10,7 +10,7 @@ angular.module('dengue.locais').factory('locais', function(){
 
   function getLocations(err, data){
     var xmlhttp = new XMLHttpRequest();
-    var url = "http://127.0.0.1:3000/api/locations/listar";
+    var url = "https://dengue-em-foco.herokuapp.com/api/locations/listar";
     xmlhttp.onreadystatechange = function(e) {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var values = JSON.parse(xmlhttp.responseText);
@@ -37,7 +37,7 @@ angular.module('dengue.locais').factory('locais', function(){
     }
     function nearestMarkers(loc){
       var xmlhttp = new XMLHttpRequest();
-      var url = "http://127.0.0.1:3000/api/markers/localizarProximo/"+loc[0]+"/"+loc[1];
+      var url = "https://dengue-em-foco.herokuapp.com/api/markers/localizarProximo/"+loc[0]+"/"+loc[1];
       xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
               var values = JSON.parse(xmlhttp.responseText);
