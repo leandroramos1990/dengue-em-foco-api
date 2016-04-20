@@ -1,1 +1,1 @@
-angular.module('dengue', ['ngRoute', 'ui.bootstrap', 'dengue.focos']);
+angular.module('dengue', ['ngRoute', 'ui.bootstrap', 'dengue.focos','dengue.locais']);
