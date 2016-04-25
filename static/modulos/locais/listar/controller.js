@@ -1,18 +1,28 @@
-angular.module('dengue.locais').controller('ListarLocaisController', function($scope, $location, $routeParams, locais){
-  //Controller utiliza o serviço nessa aqui ------------------------------------------------------------------^^^^^-------
-  $scope.localidades = locais.locations();
-  $scope.markers = {};
-
-  $scope.data = {
-   availableOptions: $scope.localidades,
-   selectedOption:$scope.localidades[0],//[{id: 1 , title:"SELECIONE"}],
-   selectCity: null
-   };
-   $scope.selectCity = function()
-   {
-     console.log($scope.data.selectedOption.title +" location: " + $scope.data.selectedOption.loc);
-     //locais.locationMarker($scope.data.selectedOption.loc);
-     locais.nearestMarkers($scope.data.selectedOption.loc);
-
-   };
+angular.module('dengue.locais').controller('ListarLocaisController', function($scope, locais){
+  $scope.localidades = [];
+  locais.locations()
+  .then(function(response){
+    $scope.localidades = response.data;
+    $scope.data = {
+     availableOptions: $scope.localidades.locations,
+     selectedOption:$scope.localidades.locations[0],
+     selectCity: null
+     };
+  })
+  .catch(function(error){
+    console.log(error);
+  })
+  $scope.selectCity = function(){
+       locais.nearestMarkers($scope.data.selectedOption.loc)
+       .then(function(response){
+         if(response.data.length >0 ){
+            locais.setMarkers(response.data, $scope.data.selectedOption.loc)
+         }else{
+            alert('Nenhum foco identificado para a região de '+ $scope.data.selectedOption.title +'. RAIO de 10 KM');
+         }
+       })
+       .catch(function(error){
+         console.log(error);
+       })
+  };
 });
