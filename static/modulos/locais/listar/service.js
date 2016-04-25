@@ -1,23 +1,29 @@
 
 angular.module('dengue.locais').factory('locais', function($http){
+
   function locations(){
     var url = "https://dengue-em-foco.herokuapp.com/api/locations/listar";
     return $http.get(url)
   }
+
   function locationMarker(loc , map){
       var map = map;
           var latLng = new google.maps.LatLng(loc[0],loc[1]);
           var marker = new google.maps.Marker({
                 position: latLng,
-                icon: 'http://192.168.0.110:8080/' + 'citymarker.ico',
+                icon: 'http://192.168.0.110:8080/img/citymarker.ico',
+                title: 'Região',
                 map: map
           });
           map.setCenter(latLng);
+          map.setZoom(12);
   }
+
   function nearestMarkers(loc){
       var url = "https://dengue-em-foco.herokuapp.com/api/markers/localizarProximo/"+loc[0]+"/"+loc[1];
       return $http.get(url)
   }
+
   var getMap = function()  {
       var center = new google.maps.LatLng(37.4419, -122.1419);
       var map = new google.maps.Map(document.getElementById('map'), {
@@ -27,6 +33,7 @@ angular.module('dengue.locais').factory('locais', function($http){
       });
       return map;
   }
+
   var setMarkers = function(markersJSON, loc){
       var map = getMap();
       var markers = [];
@@ -52,10 +59,34 @@ angular.module('dengue.locais').factory('locais', function($http){
           map.setZoom(12);
         }
         var markerCluster = new MarkerClusterer(map, markers);
+        setCurrentPosition(map);
         locationMarker(loc, map);
   }
+
   var infowindow = new google.maps.InfoWindow({
   });
+
+  function setCurrentPosition(map){
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          var latLng = new google.maps.LatLng(pos.lat, pos.lng);
+          var marker = new google.maps.Marker({
+                position: latLng,
+                icon: 'http://127.0.0.1:8080/' + '/img/ic_user_location.png',
+                title:'Você está aqui!    ',
+                map: map
+          });
+          marker.addListener('click', function() {
+              infowindow.setContent(marker.title);
+              infowindow.open(map, marker);
+          });
+        });
+      }
+  }
 
   return {
     locations:locations,

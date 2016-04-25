@@ -15,11 +15,9 @@ var inserir = function(res){
 	var description = data.headers.description;
 
 	var marker = new Marker({ title: title, description: description , loc : [location[0], location[1]], photoUrl :photoUrl });
-	//var marker = new Marker({ title: 'foco em São Tomé', description: 'poço', loc : [-22.7440283,-45.1314822] });
 
 	marker.save();
 	var resposta = "OK";
-	//res.status(200).json({ status: 'success'});
 }
 
 var localizarProximo = function(req, res) {
@@ -45,7 +43,6 @@ var localizarProximo = function(req, res) {
 		} else {
 			console.log(err);
 		}
-
 	});
 }
 

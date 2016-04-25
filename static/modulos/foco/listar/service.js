@@ -1,9 +1,11 @@
 
 angular.module('dengue.focos').factory('focos', function($http){
+
   function carregar(){
     var url = "https://dengue-em-foco.herokuapp.com/api/markers/listar";
     return $http.get(url)
   };
+
   function setCurrentPosition(map){
       if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -14,7 +16,7 @@ angular.module('dengue.focos').factory('focos', function($http){
           var latLng = new google.maps.LatLng(pos.lat, pos.lng);
           var marker = new google.maps.Marker({
                 position: latLng,
-                icon: 'http://127.0.0.1:8080/' + '/img/ic_user_mdpi.png',
+                icon: 'http://127.0.0.1:8080/' + '/img/ic_user_location.png',
                 title:'Você está aqui!    ',
                 map: map
           });
@@ -23,9 +25,10 @@ angular.module('dengue.focos').factory('focos', function($http){
               infowindow.open(map, marker);
           });
           map.setCenter(pos);
-        },function() {});
+        });
       }
   }
+
   var getMap = function()  {
       var center = new google.maps.LatLng(37.4419, -122.1419);
       var map = new google.maps.Map(document.getElementById('map'), {
@@ -35,6 +38,7 @@ angular.module('dengue.focos').factory('focos', function($http){
       });
     return map;
   }
+
   var setMarkers = function(markersJSON){
     var map = getMap();
     var markers = [];
@@ -61,8 +65,10 @@ angular.module('dengue.focos').factory('focos', function($http){
     var markerCluster = new MarkerClusterer(map, markers);
     setCurrentPosition(map);
   }
+
   var infowindow = new google.maps.InfoWindow({
   });
+
   return {
     carregar:carregar,
     setMarkers:setMarkers

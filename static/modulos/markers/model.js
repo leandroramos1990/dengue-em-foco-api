@@ -2,16 +2,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var markerSchema = new Schema({
-    /*
-    lat: {
-        type: Number,
-        required: true
-    },
-    lng: {
-        type: Number,
-        required: true
-    },
-    */
 		loc : {
 			type: [Number],
 			index: '2dsphere'
@@ -28,9 +18,7 @@ var markerSchema = new Schema({
         type: String,
         required: false
     }
-
 });
-
 
 var Marker = mongoose.model('markers', markerSchema);
 

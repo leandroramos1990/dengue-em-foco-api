@@ -12,7 +12,6 @@ var locationSchema = new Schema({
     }
 });
 
-
 var Location = mongoose.model('locations', locationSchema);
 
 module.exports = Location;

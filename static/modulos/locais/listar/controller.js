@@ -1,5 +1,7 @@
 angular.module('dengue.locais').controller('ListarLocaisController', function($scope, locais){
+
   $scope.localidades = [];
+
   locais.locations()
   .then(function(response){
     $scope.localidades = response.data;
@@ -12,6 +14,7 @@ angular.module('dengue.locais').controller('ListarLocaisController', function($s
   .catch(function(error){
     console.log(error);
   })
+
   $scope.selectCity = function(){
        locais.nearestMarkers($scope.data.selectedOption.loc)
        .then(function(response){
@@ -19,6 +22,7 @@ angular.module('dengue.locais').controller('ListarLocaisController', function($s
             locais.setMarkers(response.data, $scope.data.selectedOption.loc)
          }else{
             alert('Nenhum foco identificado para a região de '+ $scope.data.selectedOption.title +'. RAIO de 10 KM');
+            locais.setMarkers(response.data, $scope.data.selectedOption.loc)
          }
        })
        .catch(function(error){
