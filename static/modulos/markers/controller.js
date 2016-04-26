@@ -39,7 +39,7 @@ var localizarProximo = function(req, res) {
 
 	Marker.find(query, function (err, locations){
 		if(!err){
-			res.status(200).json(locations);
+			res.status(200).json({nearestlocations:locations});
 		} else {
 			console.log(err);
 		}
