@@ -11,7 +11,7 @@ angular.module('dengue.locais').factory('locais', function($http){
           var latLng = new google.maps.LatLng(loc[0],loc[1]);
           var marker = new google.maps.Marker({
                 position: latLng,
-                icon: 'http://192.168.0.110:8080/img/citymarker.ico',
+                icon: 'http://192.168.0.110:8080/img/citymarker.ico', 
                 title: 'Região',
                 map: map
           });
