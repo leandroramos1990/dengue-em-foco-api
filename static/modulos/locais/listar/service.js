@@ -11,7 +11,7 @@ angular.module('dengue.locais').factory('locais', function($http){
           var latLng = new google.maps.LatLng(loc[0],loc[1]);
           var marker = new google.maps.Marker({
                 position: latLng,
-                icon: 'http://192.168.0.110:8080/img/citymarker.ico', 
+                icon: 'http://127.0.0.1:8080/img/ic_city_location.png',
                 title: 'Região',
                 map: map
           });
@@ -59,8 +59,13 @@ angular.module('dengue.locais').factory('locais', function($http){
           map.setZoom(12);
         }
         var markerCluster = new MarkerClusterer(map, markers);
-        setCurrentPosition(map);
-        locationMarker(loc, map);
+        if(loc[0] == 0 && loc[1] == 0)
+        {
+            setCurrentPosition(map);
+        }else {
+            locationMarker(loc, map);
+        }
+
   }
 
   var infowindow = new google.maps.InfoWindow({
@@ -76,7 +81,7 @@ angular.module('dengue.locais').factory('locais', function($http){
           var latLng = new google.maps.LatLng(pos.lat, pos.lng);
           var marker = new google.maps.Marker({
                 position: latLng,
-                icon: 'http://127.0.0.1:8080/' + '/img/ic_user_location.png',
+                icon: 'http://127.0.0.1:8080/' + 'img/ic_user_location.png',
                 title:'Você está aqui!    ',
                 map: map
           });
