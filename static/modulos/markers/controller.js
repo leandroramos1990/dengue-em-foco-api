@@ -7,7 +7,7 @@ var listar = function(req, res){
 }
 
 var inserir = function(res){
-	var path = "http://127.0.0.1:8080/js/public/"
+	var path = "http://192.168.0.110:8080/js/public/"
 	var data = res.req;
 	var photoUrl = path + data.file.filename;
 	var location = JSON.parse(data.headers.loc);
