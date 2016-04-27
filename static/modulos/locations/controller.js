@@ -2,7 +2,13 @@ var Location = require('./model');
 
 var listar = function(req, res){
 	Location.find({}, function (err, locations){
-		res.status(200).json({locations: locations});
+        
+        if(!err){
+            var todosFocos = {_id:0, title: "Todos os locais", loc:[0, 0]}
+            locations.unshift(todosFocos);
+		    res.status(200).json({locations: locations});     
+        }
+        
 	});
 }
 
