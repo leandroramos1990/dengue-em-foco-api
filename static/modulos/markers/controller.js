@@ -23,19 +23,24 @@ var inserir = function(res){
 var localizarProximo = function(req, res) {
 	var lat = req.params.lat;
 	var lng = req.params.lng;
-
-	var query = {
-			  loc:{
-				    $near: {
-				      $geometry:{
-				        type:"Point",
-				        coordinates:[lat, lng] //Longitude, Latitude
-				      },
-				      $maxDistance: 7500, //Metros (10 km)
-				      $minDistance: 0  //Metros
-				    }
-				  }
-				};
+    var query = {};
+    
+    if(lat != 0 && lng != 0) {
+      query = {
+      loc:{
+            $near: {
+              $geometry:{
+                type:"Point",
+                coordinates:[lat, lng] //Longitude, Latitude
+              },
+              $maxDistance: 10000, //Metros (10 km)
+              $minDistance: 0  //Metros
+            }
+          }
+        };
+    }
+    
+    console.log(query);
 
 	Marker.find(query, function (err, locations){
 		if(!err){

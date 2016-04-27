@@ -18,7 +18,7 @@ var localizarProximo = function(req, res) {
     var query = {};
     
     if(lat != 0 && lng != 0) {
-      var query = {
+      query = {
       loc:{
             $near: {
               $geometry:{
@@ -30,8 +30,8 @@ var localizarProximo = function(req, res) {
             }
           }
         };
-    } 
-      
+    }
+          
 	Location.find(query, function (err, locations){
 		if(!err){
 			res.status(200).json(locations);
