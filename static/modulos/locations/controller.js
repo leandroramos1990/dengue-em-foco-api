@@ -7,10 +7,7 @@ var listar = function(req, res){
             locations.unshift(todosFocos);
 		    res.status(200).json({locations: locations});
         }
-
 	});
-}
-
 var localizarProximo = function(req, res) {
 	var lat = req.params.lat;
 	var lng = req.params.lng;
@@ -30,6 +27,7 @@ var localizarProximo = function(req, res) {
           }
         };
     }
+	}
 
 	Location.find(query, function (err, locations){
 		if(!err){
