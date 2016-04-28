@@ -2,12 +2,15 @@ var Location = require('./model');
 
 var listar = function(req, res){
 	Location.find({}, function (err, locations){
-        
-            var todosFocos = {_id:0, title: "Todas Regiões", loc:[0, 0]}
-            locations.unshift(todosFocos);
+
+        var todosFocos = {_id:0, title: "Todas Regiões", loc:[0, 0]}
+			/*locations.sort(function(a,b){
+						return a.title > b.title;
+				});*/
+        locations.unshift(todosFocos);
 		    res.status(200).json({locations: locations});
-        
-	});
+
+	}).sort({title:1});
 }
 
 var localizarProximo = function(req, res) {
@@ -29,7 +32,7 @@ var localizarProximo = function(req, res) {
           }
         };
     }
-	
+
 
 	Location.find(query, function (err, locations){
 		if(!err){

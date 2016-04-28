@@ -5,6 +5,9 @@ angular.module('dengue.locais').controller('ListarLocaisController', function($s
   locais.locations()
   .then(function(response){
     $scope.localidades = response.data;
+    $scope.localidades.locations.sort(function(a,b){
+        return a.title > b.title;
+    });
     $scope.data = {
      availableOptions: $scope.localidades.locations,
      selectedOption:$scope.localidades.locations[0],

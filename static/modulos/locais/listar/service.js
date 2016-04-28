@@ -89,6 +89,8 @@ angular.module('dengue.locais').factory('locais', function($http){
               infowindow.setContent(marker.title);
               infowindow.open(map, marker);
           });
+          map.panTo(pos);
+          map.setZoom(6);
         });
       }
   }
