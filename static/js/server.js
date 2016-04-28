@@ -30,13 +30,13 @@ var storage =   multer.diskStorage({
 var upload = multer({ storage : storage}).single('userPhoto');
 
 app.post('/api/photo',function(req,res){
+  markerController.inserir(res);
     upload(req,res,function(err) {
-
         //if(err) {
         //    return res.end("Error uploading file." + err);
         //}
         //res.end("File: "+ req.file.filename +" is uploaded");
-        markerController.inserir(res);
+
     });
 });
 app.post('/api/photoLocation',function(req,res){
