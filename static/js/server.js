@@ -32,10 +32,10 @@ var upload = multer({ storage : storage}).single('userPhoto');
 app.post('/api/photo',function(req,res){
     upload(req,res,function(err) {
 
-        if(err) {
-            return res.end("Error uploading file." + err);
-        }
-        res.end("File: "+ req.file.filename +" is uploaded");
+        //if(err) {
+        //    return res.end("Error uploading file." + err);
+        //}
+        //res.end("File: "+ req.file.filename +" is uploaded");
         markerController.inserir(res);
     });
 });
