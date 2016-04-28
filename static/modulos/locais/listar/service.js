@@ -48,7 +48,9 @@ angular.module('dengue.locais').factory('locais', function($http){
               name:i
           });
 
-          var content = "<h3>" + foco.title +  '<h6>' + "" + foco.description + '<br><IMG BORDER="0" ALIGN="Center" WEIGHT="150" HEIGHT="150" SRC='+foco.photoUrl+'>'
+                      
+
+          var content = "<h3>" + foco.title +  "</h3>" + '<h6>'  + foco.description + "</h6>" +  '<br><IMG BORDER="0" ALIGN="Center" WEIGHT="150" HEIGHT="150" SRC='+foco.photoUrl+'>'
           markers.push(marker);
           google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){
               return function() {
