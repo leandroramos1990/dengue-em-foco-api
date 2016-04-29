@@ -11,7 +11,8 @@ angular.module('dengue.locais').factory('locais', function($http){
           var latLng = new google.maps.LatLng(loc[0],loc[1]);
           var marker = new google.maps.Marker({
                 position: latLng,
-                icon: 'http://127.0.0.1:8080/img/ic_city_location.png',
+                //icon: 'http://127.0.0.1:8080/img/ic_city_location.png',
+                icon: 'https://s3.amazonaws.com/dengue-em-foco-web/img/ic_city_location.png',
                 title: 'Região',
                 map: map
           });
@@ -48,7 +49,7 @@ angular.module('dengue.locais').factory('locais', function($http){
               name:i
           });
 
-                      
+
 
           var content = "<h3>" + foco.title +  "</h3>" + '<h6>'  + foco.description + "</h6>" +  '<br><IMG BORDER="0" ALIGN="Center" WEIGHT="150" HEIGHT="150" SRC='+foco.photoUrl+'>'
           markers.push(marker);
@@ -83,7 +84,8 @@ angular.module('dengue.locais').factory('locais', function($http){
           var latLng = new google.maps.LatLng(pos.lat, pos.lng);
           var marker = new google.maps.Marker({
                 position: latLng,
-                icon: 'http://127.0.0.1:8080/' + 'img/ic_user_location.png',
+                //icon: 'http://127.0.0.1:8080/' + 'img/ic_user_location.png',
+                icon: 'https://s3.amazonaws.com/dengue-em-foco-web/img/ic_user_location.png',
                 title:'Você está aqui!    ',
                 map: map
           });

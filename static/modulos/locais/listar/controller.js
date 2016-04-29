@@ -4,7 +4,7 @@ angular.module('dengue.locais').controller('ListarLocaisController', function($s
 
   locais.locations()
   .then(function(response){
-    $scope.localidades = response.data;
+    $scope.localidades = response.data
     $scope.data = {
      availableOptions: $scope.localidades.locations,
      selectedOption:$scope.localidades.locations[0],

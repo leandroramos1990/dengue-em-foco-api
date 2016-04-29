@@ -16,7 +16,8 @@ angular.module('dengue.focos').factory('focos', function($http){
           var latLng = new google.maps.LatLng(pos.lat, pos.lng);
           var marker = new google.maps.Marker({
                 position: latLng,
-                icon: 'http://127.0.0.1:8080/' + '/img/ic_user_location.png',
+                //icon: 'http://127.0.0.1:8080/' + '/img/ic_user_location.png',
+                icon: 'https://s3.amazonaws.com/dengue-em-foco-web/img/ic_user_location.png',
                 title:'Você está aqui!    ',
                 map: map
           });
