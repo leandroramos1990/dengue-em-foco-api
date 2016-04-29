@@ -8,7 +8,7 @@ var listar = function(req, res){
 
 var inserir = function(res){
 	var data = res.req;
-	var photoUrl = data.file.filename;
+	var photoUrl = data.headers.filename;
 	var location = JSON.parse(data.headers.loc);
 	var title = data.headers.title;
 	var description = data.headers.description;
