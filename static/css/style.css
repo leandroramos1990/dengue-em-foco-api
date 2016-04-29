@@ -1,8 +1,8 @@
-body {
-    margin: 0;
-    padding: 10px 20px 20px;
-    font-family: Arial;
-    font-size: 16px;
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+}
+p, div {
+    font-family: 'Roboto', sans-serif;
 }
 
 #map-container {
@@ -25,15 +25,31 @@ h3.title-foco{
     color: #fff;
     width:100%!important;
 }
-#iw-container  .iw-title {
-   font-family: 'Open Sans Condensed', sans-serif;
+#descricao{
+    width: 50%;
+    float: left;
+    margin-top: 17px;
+    text-align: left;
+    margin-left: 4px;
+}
+img.alinhar-imagem{
+    width:150px;
+    height: 150px;
+    float: right;
+    margin-right: 4px;
+    margin-bottom: 4px;
+
+    
+}
+.iw-title {
+   font-family: 'Roboto', sans-serif !important;
    font-size: 22px;
    font-weight: 400;
    padding: 10px;
    background-color: #48b5e9;
    color: white;
-   margin: 1px;
-   border-radius: 2px 2px 0 0; /* In accordance with the rounding of the default infowindow corners. */
+   margin: 0px;
+   border-radius: 2px 2px 2px 2px; /* In accordance with the rounding of the default infowindow corners. */
 }
 
 .gm-style-iw {
@@ -44,4 +60,44 @@ h3.title-foco{
    box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
    border: 1px solid rgba(72, 181, 233, 0.6);
    border-radius: 2px 2px 10px 10px; // apply 10px to the bottom corners of the infowindow
+}
+
+/* white background and box outline */
+.gm-style > div:first-child > div + div > div:last-child > div > div:first-child > div
+{
+    /* we have to use !important because we are overwritng inline styles */
+    background-color: transparent !important;
+    box-shadow: none !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+/* arrow colour */
+.gm-style > div:first-child > div + div > div:last-child > div > div:first-child > div > div > div
+{
+    background-color: #003366 !important; 
+}
+
+/* close button */
+.gm-style > div:first-child > div + div > div:last-child > div > div:last-child
+{
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+/* image icon inside close button */
+.gm-style > div:first-child > div + div > div:last-child > div > div:last-child > img
+{
+    display: none;
+}
+
+/* positioning of infowindow */
+.gm-style-iw
+{
+    top: 22px !important;
+    left: 22px !important;
+}
+.gm-style-iw > div{
+    
+    width: 100%;
 }
