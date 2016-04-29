@@ -40,8 +40,6 @@ var upload = multer({ storage : storage}).single('userPhoto');
     });
 });*/
 app.post('/api/photo',function(req,res){
-  console.log(res);
-  console.log(req);
   markerController.inserir(res);
 });
 app.post('/api/photoLocation',function(req,res){

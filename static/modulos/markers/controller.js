@@ -6,17 +6,20 @@ var listar = function(req, res){
 	});
 }
 
-var inserir = function(res){
-	var data = res.req;
-	var photoUrl = data.headers.filename;
-	var location = JSON.parse(data.headers.loc);
-	var title = data.headers.title;
-	var description = data.headers.description;
+var inserir = function(req, res){
+
+	var data = req.req.body;
+	var photoUrl = data.filename;
+	var location = JSON.parse(data.loc);
+	var title = data.title;
+	var description = data.description;
 
 	var marker = new Marker({ title: title, description: description , loc : [location[0], location[1]], photoUrl :photoUrl});
 
 	marker.save();
-	var resposta = "OK";
+
+	req.res.status(200);
+
 }
 
 var localizarProximo = function(req, res) {
