@@ -101,3 +101,11 @@ img.alinhar-imagem{
     
     width: 100%;
 }
+.escolha-regiao{
+    margin-top: 30px;
+    font-family: 'Roboto', sans-serif !important;
+}
+.mapa select{
+    height: 30px;
+    font-family: 'Roboto', sans-serif !important;
+}
