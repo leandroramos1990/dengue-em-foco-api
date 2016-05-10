@@ -6,6 +6,12 @@ var listar = function(req, res){
 	});
 }
 
+var count = function(req, res){
+	 	Marker.count({}, function (err, count) {
+       res.status(200).json(count);
+		});
+}
+
 var inserir = function(req, res){
 
 	var data = req.req.body;
@@ -56,3 +62,4 @@ var localizarProximo = function(req, res) {
 exports.listar = listar;
 exports.inserir = inserir;
 exports.localizarProximo = localizarProximo;
+exports.count = count;

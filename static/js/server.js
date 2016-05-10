@@ -51,6 +51,9 @@ app.get('/api/markers/listar', markerController.listar);
 app.get('/api/locations/listar', locationController.listar);
 
 app.post('/api/markers/inserir', chamarController);
+
+app.get('/api/markers/contar', markerController.count);
+
 function chamarController(req,res,obj){
 }
 
