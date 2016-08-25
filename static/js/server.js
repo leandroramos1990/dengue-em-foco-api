@@ -1,7 +1,6 @@
 var express     =   require("express");
 var multer      =   require('multer');
 var app         =   express();
-
 var fs          = require("fs");
 var file;
 var cors = require('cors');
@@ -29,16 +28,6 @@ var storage =   multer.diskStorage({
 
 var upload = multer({ storage : storage}).single('userPhoto');
 
-/*app.post('/api/photo',function(req,res){
-  markerController.inserir(res);
-    upload(req,res,function(err) {
-        if(err) {
-            return res.end("Error uploading file." + err);
-        /}
-        res.end("File: "+ req.file.filename +" is uploaded");
-
-    });
-});*/
 app.post('/api/photo',function(req,res){
   markerController.inserir(res);
 });

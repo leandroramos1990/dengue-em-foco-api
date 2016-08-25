@@ -19,8 +19,15 @@ var inserir = function(req, res){
 	var location = JSON.parse(data.loc);
 	var title = data.title;
 	var description = data.description;
+  var date = Date.now();
 
-	var marker = new Marker({ title: title, description: description , loc : [location[0], location[1]], photoUrl :photoUrl});
+	var marker = new Marker({
+                title: title,
+                description: description ,
+                loc : [location[0], location[1]],
+                photoUrl :photoUrl,
+                date : date
+              });
 
 	marker.save();
 
