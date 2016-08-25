@@ -17,6 +17,10 @@ var markerSchema = new Schema({
     description :{
         type: String,
         required: false
+    },
+    date : {
+      type: Date,
+      default: Date.now
     }
 });
 
